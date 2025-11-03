@@ -1,6 +1,6 @@
 
 import random
-
+import csv
 def Triagen(P1, P2, P3):
 
     while(True):
@@ -26,11 +26,12 @@ def Triagen(P1, P2, P3):
 a_tria = Triagen([0,0,0], [1,0,0], [1,1,0])
 b_tria = Triagen([0,0,0], [0,1,0], [-1,0,0])
 
-# Loop that never gets exhausted
-# For a parallelogram
 while(True):
-    print(next(a_tria))
-    print(next(b_tria))
+    with open("./Triangle.csv",mode = 'w',newline='') as File:
+        WriterObj = csv.writer(File)
+        WriterObj.writerow(["X","Y","Z"])
+        WriterObj.writerow(next(a_tria))
+        WriterObj.writerow(next(b_tria))
 
 # Single triangle
 # Loop that never gets exhausted
