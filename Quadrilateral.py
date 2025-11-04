@@ -17,7 +17,7 @@ def Triagen(P1,P2,P3):
         U = random.random()
         V = random.random()
 
-        if(U+V < 1):
+        if(U+V > 1):
             alpha = 1 - U - V
             beta = U
             gamma = V
