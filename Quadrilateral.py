@@ -4,13 +4,13 @@ import random
 def Quadgen(P1,P2,P3,P4):
     tria_a = Triagen(P1,P2,P3)
     tria_b = Triagen(P3,P4,P1)
-    with open("./Quad.csv",mode = 'w',newline='') as file:
-        WriterObj = csv.writer(file)
-        for i in range(1000):
-            WriterObj.writerow(next(tria_a))
-            WriterObj.writerow(next(tria_b))
-            
 
+    while(True):
+        if(random.random() < 0.5):
+            yield next(tria_a)
+        else:
+            yield next(tria_b)
+            
 def Triagen(P1,P2,P3):
 
     while(True):
@@ -31,7 +31,12 @@ def Triagen(P1,P2,P3):
 
         yield X,Y,Z
 
-Quadgen([0,0,0], [1,0,0], [1,1,0], [0,1,0])  
+
+QuadgenObj = Quadgen([0,0,0], [1,0,0], [1,1,0], [0,1,0])  
+with open("./Quad.csv",mode = 'w',newline='') as file:
+    WriterObj = csv.writer(file)
+    for i in range(1000):
+        WriterObj.writerow(next(QuadgenObj))
 
 
 
